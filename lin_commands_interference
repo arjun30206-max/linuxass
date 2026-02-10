@@ -1,0 +1,153 @@
+
+# Linux Basic Commands Inference
+
+**Name:** Arjun
+**Roll No:** 12
+**Class:** Same class
+
+---
+
+## 1. Setup and Directory Creation
+
+* `mkdir ev4` : Created a new directory named `ev4`.
+* `cd ev4` : Changed current directory to `ev4`.
+
+  * **Resultant Path:** `/home/arjun/ev4`
+* `mkdir 12` : Created a directory named `12` (my roll number).
+
+  * **Resultant Path:** `/home/arjun/ev4`
+* `cd 12` : Entered the directory `12`.
+
+  * **Resultant Path:** `/home/arjun/ev4/12`
+
+---
+
+## 2. Navigation Commands
+
+* `cd -` : Switched back to the previous directory (`ev4`).
+
+  * **Resultant Path:** `/home/arjun/ev4`
+* `cd -` : Toggled back to the directory I was just in (`12`).
+
+  * **Resultant Path:** `/home/arjun/ev4/12`
+* `cd .` : No change occurred (represents current directory).
+
+  * **Resultant Path:** `/home/arjun/ev4/12`
+* `cd ..` : Moved up one level to the parent directory (`ev4`).
+
+  * **Resultant Path:** `/home/arjun/ev4`
+* `cd ~` : Moved immediately to my Home directory (`arjun`).
+
+  * **Resultant Path:** `/home/arjun`
+* `cd /` : Moved to the Root directory.
+
+  * **Resultant Path:** `/`
+* `ls -l` : Listed files in Root.
+
+  * **Resultant Path:** `/`
+* `cd media` : Entered the `media` directory inside Root.
+
+  * **Resultant Path:** `/media`
+* `cd` : Returned to my Home directory.
+
+  * **Resultant Path:** `/home/arjun`
+* `pwd` : Printed the absolute path of the current directory.
+
+  * **Output:** `/home/arjun`
+* `cd media` : Error (`No such file or directory`).
+
+  * **Resultant Path:** `/home/arjun`
+* `cd /media` : Successfully entered media using absolute path.
+
+  * **Resultant Path:** `/media`
+* `ls -l` : Listed contents of media.
+
+  * **Resultant Path:** `/media`
+* `cd ~/ev4/12` : Navigated directly back to my work folder.
+
+  * **Resultant Path:** `/home/arjun/ev4/12`
+
+---
+
+## 3. File and Directory Management
+
+*(Current Path: `/home/arjun/ev4/12`)*
+
+* `mkdir emptydummy` : Created folder `emptydummy`.
+* `mkdir dummy` : Created folder `dummy`.
+* `cd dummy` : Entered the dummy folder.
+
+  * **Resultant Path:** `/home/arjun/ev4/12/dummy`
+* `touch file1` : Created empty file `file1`.
+* `touch file2` : Created empty file `file2`.
+* `ls -l` : Verified the files exist.
+* `rm -i file2` : Deleted `file2` after confirmation.
+* `cd ..` : Moved back to parent directory (`12`).
+
+  * **Resultant Path:** `/home/arjun/ev4/12`
+* `rm emptydummy` : Failed (Error: Is a directory).
+* `rmdir emptydummy` : Successfully removed the directory as it was empty.
+* `rmdir dummy` : Failed (Error: Directory not empty).
+* `rm -r dummy` : Recursively removed the `dummy` directory and its contents.
+
+---
+
+## 4. File Content and Redirection (I/O)
+
+*(Current Path: `/home/arjun/ev4/12`)*
+
+* `cat > file1.txt` : Created file with text `My first line`.
+* `cat > file2.txt` : Created file with text `Hello Second line`.
+* `cat > file3.txt` : Created file with text `Hello line`.
+* `cat file1.txt file2.txt > file_combined.txt` : Combined file1 and file2.
+* `cat file_combined.txt` : Displayed combined content.
+* `cat file3.txt >> file_combined.txt` : Appended file3 to the combined file.
+* `cat file_combined.txt` : Displayed total combined content.
+* `grep -i hello file*` : Displayed all lines containing `hello`.
+* `cp file1.txt ~/ev4` : Copied file to `/home/arjun/ev4`.
+* `mv file_combined.txt combined` : Renamed the file to `combined`.
+
+---
+
+## 5. Permissions (chmod)
+
+### Method A: Symbolic Mode
+
+* `chmod u+x file.sh` : Added execute permission for the owner.
+* `chmod g-w file.txt` : Removed write permission for the group.
+* `chmod a+r file.txt` : Added read permission for all users.
+* `chmod u=rwx,g=rx,o=r myfile` : Assigned exact permissions.
+
+### Method B: Numeric (Octal) Mode
+
+* `chmod 754 file.txt` : Owner (rwx), Group (r-x), Others (r--).
+
+* `chmod 600 file.txt` : Owner read/write only.
+
+* `chmod u+x combined` : Added execute permission for owner.
+
+  * *Observation:* Owner permission shows `x` in `ls -l`.
+
+* `chmod g-r combined` : Removed read permission from group.
+
+  * *Observation:* Group `r` permission removed.
+
+* `chmod 777 combined` : Gave full permissions to all users.
+
+  * *Observation:* Permissions became `rwxrwxrwx`.
+
+---
+
+## 6. User Management (sudo)
+
+* `sudo useradd alice` : Created a new user `alice`.
+* `sudo passwd alice` : Set password for user `alice`.
+* `sudo userdel alice` : Deleted the user account `alice`.
+
+---
+
+## 7. Communication
+
+* `write alice` : Sent real-time messages to user `alice` (if logged in).
+* `mesg y / mesg n` : Enabled or disabled receiving messages from other users.
+
